@@ -1,5 +1,0 @@
-# Terragrunt
-
-
-`terragrunt plan`
-
