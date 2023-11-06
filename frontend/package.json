@@ -1,7 +1,11 @@
 {
   "name": "frontend",
-  "version": "0.1.0",
+  "author": {
+    "name": "joey-ma"
+  },
   "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -19,5 +23,6 @@
     "tailwindcss": "^3.3.0",
     "eslint": "^8",
     "eslint-config-next": "14.0.1"
-  }
+  },
+  "license": "ISC"
 }
