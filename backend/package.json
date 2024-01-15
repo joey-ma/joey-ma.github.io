@@ -13,12 +13,11 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/strapi": "4.15.0",
-    "@strapi/plugin-users-permissions": "4.15.0",
-    "@strapi/plugin-i18n": "4.15.0",
-    "pg": "8.8.0"
+    "@strapi/plugin-i18n": "^4.17.0",
+    "@strapi/plugin-users-permissions": "^4.17.0",
+    "@strapi/strapi": "4.17.0",
+    "pg": "8.11.3"
   },
-  "devDependencies": {},
   "license": "ISC",
   "engines": {
     "node": ">=18.0.0 <=20.x.x",
