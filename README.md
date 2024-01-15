@@ -5,19 +5,13 @@ A fresh start!
 ### Installation
 
 ```bash
-npm install
+npm run setup
 ```
 
 ### Local Development
 
 ```bash
-npm start
-```
-
-or 
-
-```bash
-npm run start
+npm run dev
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
@@ -29,6 +23,14 @@ $ npm run build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+### Running Your Production Build
+
+```bash
+npm run start
+```
+
+This command runs the server in production mode.
 
 ### Deployment
 
