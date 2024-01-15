@@ -1,0 +1,23 @@
+{
+  "name": "joey-ma.github.io",
+  "version": "1.0.0",
+  "description": "a fresh start",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joey-ma/joey-ma.github.io.git"
+  },
+  "keywords": [
+    "joey-ma",
+    "next.js",
+    "strapi"
+  ],
+  "author": "joey-ma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joey-ma/joey-ma.github.io/issues"
+  },
+  "homepage": "https://github.com/joey-ma/joey-ma.github.io#readme"
+}
