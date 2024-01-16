@@ -6,11 +6,13 @@ export default function (allStagedFiles) {
     return `printf '%s\n' "Script files aren't allowed in src directory" >&2`;
   }
   const codeFiles = micromatch(allStagedFiles, [
+    "*.(c|m)js",
     "**/*.(c|m)js",
-    "**/*.js?(x)",
-    "**/*.ts?(x)",
-    "**/*.css",
-  ]).map((file) => `"${file}`);
+    "frontend/src/app/*.js?(x)",
+    "frontend/src/app/*.css",
+    "frontend/src/components/*.js?(x)",
+    "backend/**/*.ts?(x)",
+  ]).map((file) => `"${file}"`);
 
   const config = [];
 
