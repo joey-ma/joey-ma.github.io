@@ -10,3 +10,5 @@
 # Artifacts
 build
 coverage
+
+backend/types/generated
