@@ -21,9 +21,8 @@ export function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("🚀 ~ handleSubmit ~ formData:", formData)
+    // basic frontend input validation
     const error = validateForm(formData);
-    console.log("🚀 ~ handleSubmit ~ error:", error)
     if (error) {
       alert(error);
       return;
@@ -37,13 +36,13 @@ export function ContactForm() {
         body: JSON.stringify(formData)
       });
       if (response.ok) {
-        alert('Email sent successfully!');
+        alert('Message sent successfully!');
       } else {
-        alert('Failed to send email.');
+        alert('Failed to send message.');
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('An error occurred while sending the email.');
+      alert('An error occurred while sending the message.');
     }
   };
 
