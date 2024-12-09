@@ -72,6 +72,9 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Print environment variables for debugging
         # secrets & variables in github-pages environment
+        env:
+          TEST_SECRET_VAL: ${{ secrets.TEST_SECRET_VAL }}
+          NEXT_PUBLIC_SITE_URL: ${{ env.NEXT_PUBLIC_SITE_URL }}
         run: |
           echo "TEST_SECRET_VAL: ${{ secrets.TEST_SECRET_VAL }}"
           echo "NEXT_PUBLIC_SITE_URL: ${{ env.NEXT_PUBLIC_SITE_URL }}"
