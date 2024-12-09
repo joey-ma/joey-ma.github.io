@@ -7,8 +7,8 @@ export async function POST(req, res) {
   // basic authentication / verification
   const headersList = await headers();
   const origin = headersList.get('origin');
-  // if (origin !== process.env.NEXT_PUBLIC_SITE_URL) 
-  //   return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+  if (origin !== process.env.NEXT_PUBLIC_SITE_URL) 
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
 
   // basic backend form validation
   const formData = await req.json();
