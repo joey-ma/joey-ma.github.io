@@ -7,16 +7,17 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Joey Ma's Website",
-  description: "Get to know Joey Ma as a software engineer",
+  description: "Hire Joey Ma as a software engineer",
 };
 
-export default function Home() {
+export default function PricingPage() {
   return (
     <>
       <ScrollUp />
       <Hero />
       <Features />
       <Brands />
+      <Pricing />
     </>
   );
 }
