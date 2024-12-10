@@ -52,7 +52,7 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <div className="-mx-4 flex flex-wrap">
         <div className="w-full px-4 md:w-1/2">
           <div className="mb-8">
@@ -109,7 +109,7 @@ export function ContactForm() {
           </div>
         </div>
         <div className="w-full px-4">
-          <button className="rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark" disabled={loading}>
+          <button className="rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark" disabled={loading} onClick={handleSubmit}>
             {loading ? 'Submitting...' : 'Submit'}
           </button>
         </div>
