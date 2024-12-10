@@ -12,7 +12,7 @@ const Pricing = () => {
       <div className="container">
         <SectionTitle
           title={<>Flexible Solutions,<br/>Tailored to Your Needs</>}
-          paragraph="I offer custom web development and software engineering services designed to meet your unique project goals. Whether you’re looking for a simple website enhancement or a full-stack solution, I provide transparent pricing and flexible packages to fit your needs. Let’s collaborate and bring your vision to life!"
+          paragraph={<><p className="text-base !leading-relaxed text-body-color md:text-lg">I offer custom web development and software engineering services designed to meet your unique project goals. Whether you’re looking for a simple website enhancement or a full-stack solution, I provide transparent pricing and flexible packages to fit your needs. </p><br/><p className="text-base !leading-relaxed text-body-color md:text-lg">Let’s collaborate and bring your vision to life!</p></>}
           center
           width="665px"
         />

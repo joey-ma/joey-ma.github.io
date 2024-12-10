@@ -19,7 +19,7 @@ const Contact = () => {
               <p className="mb-4 text-base font-medium text-body-color">
                 I love GitHub! However, there are <Link href={linkTo.gitHubPagesLimits} className="link-text">limits</Link> to what one can do on GitHub Pages (as it is designed).
               </p>
-              <p className="mb-12 text-base font-medium text-body-color">These forms do NOT work. I just think they look neat. <span className="text-black font-semibold">Please send me a message on <Link className='link-text' href={linkTo.LinkedIn}>LinkedIn</Link></span>.</p>
+              <p className="mb-12 text-base font-medium text-body-color">These forms do NOT work. I just think they look neat. <span className="text-black dark:text-white font-semibold">Please send me a message on <Link className='link-text' href={linkTo.LinkedIn}>LinkedIn</Link></span>.</p>
               <ContactForm />
             </div>
           </div>
