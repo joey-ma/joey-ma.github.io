@@ -3,45 +3,59 @@ import { headers } from 'next/headers'
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-export async function POST(req, res) {
-  // basic authentication / verification
-  const headersList = await headers();
-  const origin = headersList.get('origin');
-  if (origin !== process.env.NEXT_PUBLIC_SITE_URL) 
-    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
-
-  // basic backend form validation
-  const formData = await req.json();
-  console.log("🚀 ~ POST ~ formData:", formData)
-  const { name, email, message } = formData;
-  const error = validateForm(formData);
-  if (error) {
-    console.error('Error sending message:', error);
-    return NextResponse.json({error}, { status: 500});
-  }
-
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
-
-  const mailOptions = {
-    to: process.env.INBOX,
-    subject: `ALERT: joey-ma.github.io received a message from ${name}`,
-    text: `from: "${name}" <${email}>, \n\nmessage:\n\n${message}`,
-  };
-
+export async function GET(req) {
   try {
+    // Authentication / verification
+    const headersList = await headers();
+    const referer = headersList.get('referer');
+    if (referer !== process.env.NEXT_PUBLIC_CONTACT_URL) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
+
+    // Parse query parameters from the request URL
+    const url = new URL(req.url);
+    const params = url.searchParams;
+
+    // Extract form data from query parameters
+    const formData = {
+      name: params.get("name") || "",
+      email: params.get("email") || "",
+      message: params.get("message") || "",
+    };
+
+    // Backend form validation
+    const error = validateForm(formData);
+    if (error) {
+      console.error('Error sending message:', error);
+      return NextResponse.json({error}, { status: 500});
+    }
+
+    const { name, email, message } = formData;
+
+    // Configure nodemailer transporter
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    const mailOptions = {
+      to: process.env.INBOX,
+      subject: `ALERT: joey-ma.github.io received a message from ${name}`,
+      text: `from: "${name}" <${email}>, \n\nmessage:\n\n${message}`,
+    };
+  
+    // Send email
     await transporter.sendMail(mailOptions);
-    const message = 'Message sent successfully';
-    console.log(message);
-    return NextResponse.json({ message }, {status: 200});
+    const success = 'Message sent successfully';
+    console.log(success);
+    return NextResponse.json({ success }, {status: 200});
+    
   } catch (error) {
     console.error('Error sending message:', error);
-    return NextResponse.json({ error }, {status: 400});
+    return NextResponse.json({ error: 'Internal Server Error' }, {status: 500});
   }
 }
 

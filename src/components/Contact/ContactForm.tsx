@@ -4,45 +4,50 @@ import { validateForm } from "@/lib/utils";
 import { useState } from "react";
 
 export function ContactForm() {
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // basic frontend input validation
     const error = validateForm(formData);
     if (error) {
       alert(error);
       return;
     }
+
+    setLoading(true);
+
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-      if (response.ok) {
-        alert('Message sent successfully!');
-      } else {
-        alert('Failed to send message.');
+      // Construct query string from formData
+      const queryString = new URLSearchParams(formData).toString();
+      const url = `/api/contact?${queryString}`;
+
+      // Send GET request with query string
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
       }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred while sending the message.');
+
+      alert('Message sent successfully!');
+      setFormData({ name: '', email: '', message: '' }); // Reset form
+    } catch (err) {
+      console.error(err);
+      alert('An error occurred. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -104,8 +109,8 @@ export function ContactForm() {
           </div>
         </div>
         <div className="w-full px-4">
-          <button className="rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark">
-            Submit
+          <button className="rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark" disabled={loading}>
+            {loading ? 'Submitting...' : 'Submit'}
           </button>
         </div>
       </div>
