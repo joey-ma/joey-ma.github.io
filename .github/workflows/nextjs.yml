@@ -11,7 +11,6 @@ on:
 
 # Workflow variable (environment variables scoped at the workflow level)
 env:
-  TEST_SECRET: ${{ secrets.TEST_SECRET }}
   NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -29,12 +28,10 @@ concurrency:
 jobs:
   # Build job
   build:
-    # specify the environment to be production
     runs-on: ubuntu-latest
     # Job variable (environment variables scoped at the job level)
     env:
-      TEST_SECRET_VAL: ${{ secrets.TEST_SECRET }}
-      NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
+      INBOX: ${{ secrets.INBOX }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -82,23 +79,20 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Print workflow scope level env variables for debugging
         run: |
-          echo "WORKFLOW secrets.TEST_SECRET: ${{ secrets.TEST_SECRET }}"
-          echo "WORKFLOW env.TEST_SECRET: ${{ env.TEST_SECRET }}"
-          echo "WORKFLOW $TEST_SECRET: $TEST_SECRET"
-          echo "JOB env.TEST_SECRET_VAL: ${{ env.TEST_SECRET_VAL }}"
-          echo "JOB $TEST_SECRET: $TEST_SECRET_VAL"
-          echo "vars.NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}"
-          echo "vars.NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}"
-          echo "JOB NEXT_PUBLIC_SITE_URL: ${{ env.NEXT_PUBLIC_SITE_URL }}"
+          echo "Workflow variable -> NEXT_PUBLIC_SITE_URL: $NEXT_PUBLIC_SITE_URL"
+          echo "Job variable -> INBOX: ${{ env.INBOX }}"
       - name: Build with Next.js
         # Step variables (environment variables scoped at the step level)
         env:
           EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
           INBOX: ${{ secrets.INBOX }}
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
+          # NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
         run: |
-          echo "TEST_SECRET_VAL: $TEST_SECRET_VAL"
-          echo "NEXT_PUBLIC_SITE_URL: $env.NEXT_PUBLIC_SITE_URL"
+          echo "Workflow variable -> NEXT_PUBLIC_SITE_URL: $NEXT_PUBLIC_SITE_URL"
+          echo "Job variable -> INBOX: ${{ env.INBOX }}"
+          echo "Step variable -> TEST_SECRET: $TEST_SECRET"
           ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
