@@ -1,6 +1,8 @@
 'use client';
 
+import { linkTo } from "@/lib/constants";
 import { validateForm } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function ContactForm() {
@@ -12,6 +14,8 @@ export function ContactForm() {
 
   const [loading, setLoading] = useState(false);
 
+  const router = useRouter();
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -21,15 +25,20 @@ export function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const error = validateForm(formData);
+    /* const error = validateForm(formData);
     if (error) {
       alert(error);
       return;
-    }
+    } */
 
     setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      alert(`Your message has not been saved.\nYou will be redirected to Joey's LinkedIn Profile.`);
+      router.push(linkTo.LinkedIn);
+    }, 500);
 
-    try {
+    /* try {
       // Construct query string from formData
       const queryString = new URLSearchParams(formData).toString();
       const url = `/api/contact?${queryString}`;
@@ -48,7 +57,7 @@ export function ContactForm() {
       alert('An error occurred. Please try again.');
     } finally {
       setLoading(false);
-    }
+    } */
   };
 
   return (
@@ -110,7 +119,7 @@ export function ContactForm() {
         </div>
         <div className="w-full px-4">
           <button className="rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark" disabled={loading} onClick={handleSubmit}>
-            {loading ? 'Submitting...' : 'Submit'}
+            {loading ? 'Loading...' : 'Submit'}
           </button>
         </div>
       </div>
