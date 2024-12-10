@@ -8,6 +8,10 @@
   body {
     font-family: "Inter", sans-serif;
   }
+
+  .link-text {
+    @apply underline underline-offset-2 hover:no-underline;
+  }
 }
 
 @layer components {
