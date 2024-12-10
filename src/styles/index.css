@@ -11,7 +11,7 @@
 
   body * {
     @apply transition-colors duration-300;
-}
+  }
 
   .link-text {
     @apply underline underline-offset-2 hover:no-underline;
