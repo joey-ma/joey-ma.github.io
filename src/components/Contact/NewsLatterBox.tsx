@@ -11,7 +11,7 @@ const NewsLatterBox = () => {
         Subscribe to receive future updates
       </h3>
       <p className="mb-11 border-b border-body-color border-opacity-25 pb-11 text-base leading-relaxed text-body-color dark:border-white dark:border-opacity-25">
-        Your information will never be sold. (Also, this is still on the to-do list.)
+        Your information will never be sold.
       </p>
       <div>
         <input
