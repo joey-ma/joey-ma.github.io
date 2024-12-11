@@ -25,11 +25,6 @@ export function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    /* const error = validateForm(formData);
-    if (error) {
-      alert(error);
-      return;
-    } */
 
     setLoading(true);
     setTimeout(() => {
@@ -37,31 +32,10 @@ export function ContactForm() {
       alert(`Your message has not been saved.\nYou will be redirected to Joey's LinkedIn Profile.`);
       router.push(linkTo.LinkedIn);
     }, 500);
-
-    /* try {
-      // Construct query string from formData
-      const queryString = new URLSearchParams(formData).toString();
-      const url = `/api/contact?${queryString}`;
-
-      // Send GET request with query string
-      const response = await fetch(url);
-
-      if (!response.ok) {
-        throw new Error('Failed to send message');
-      }
-
-      alert('Message sent successfully!');
-      setFormData({ name: '', email: '', message: '' }); // Reset form
-    } catch (err) {
-      console.error(err);
-      alert('An error occurred. Please try again.');
-    } finally {
-      setLoading(false);
-    } */
   };
 
   return (
-    <form>
+    <form onClick={handleSubmit}>
       <div className="-mx-4 flex flex-wrap">
         <div className="w-full px-4 md:w-1/2">
           <div className="mb-8">
@@ -118,7 +92,7 @@ export function ContactForm() {
           </div>
         </div>
         <div className="w-full px-4">
-          <button className="rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark" disabled={loading} onClick={handleSubmit}>
+          <button className="rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark" disabled={loading} >
             {loading ? 'Loading...' : 'Submit'}
           </button>
         </div>
