@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 export const sectionOne = 
-  { title: 'Empathetic Engineer', description: <><p className="text-base mb-4 !leading-relaxed text-body-color md:text-lg">As a Software Engineer who has worked in music, sales, and banking before, I enjoy working with a dynamic team with engineers of all experience levels who help each other build and grow technical and leadership skills while creating, deploying, and supporting production applications.</p><p className="text-base !leading-relaxed text-body-color md:text-lg">I've left off the non-technical experiences, but you can find my resume <Link href="/pdfs/1.3.0-joey-ma-resume.pdf" target="_blank" className="link-text">here</Link>.</p></>}
+  { title: 'Empathetic Engineer', description: <><p className="text-base mb-4 !leading-relaxed text-body-color md:text-lg">As a Software Engineer who has worked in music, sales, and banking before, I enjoy working with a dynamic team with engineers of all experience levels who help each other build and grow technical and leadership skills while creating, deploying, and supporting production applications.</p><p className="text-base !leading-relaxed text-body-color md:text-lg">I&apos;ve left off the non-technical experiences, but you can find my resume <Link href="/pdfs/1.3.0-joey-ma-resume.pdf" target="_blank" className="link-text">here</Link>.</p></>}
 
 export const sectionTwo = [
   { title: 'Iterative development', description: 'Work with the project team to validate goals and requirements, and provide input towards practical solutions, innovations, and estimation of effort and time'},
