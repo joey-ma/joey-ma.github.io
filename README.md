@@ -8,8 +8,8 @@ Welcome to my personal website. While this is still a work-in-progress, I hope t
 - Home (`/`)
 - About (`/about`)
   - Me
-  - Projects I've worked on
-- Blog (`/blog`)
+  - Projects I've worked on (work in progress)
+- Blog (`/blog`) (work in progress)
 - Contact (`/contact`)
 - Dark Mode!
 
@@ -28,3 +28,5 @@ This project is licensed under the MIT License. See the [LICENSE](https://github
 ## Acknowledgments
 
 This project was initially based on [NextJSTemplates/startup-nextjs](https://github.com/NextJSTemplates/startup-nextjs). Many thanks to the creators for their great work!
+
+Credit for the (cute) [quick brown fox](https://codepen.io/lynnandtonic/pen/YzQbVLZ) goes to [Lynn Fisher](https://codepen.io/lynnandtonic)
