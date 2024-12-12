@@ -1,6 +1,6 @@
-import Image from "next/image";
 import SectionTitle from "../Common/SectionTitle";
 import styles from './AboutSectionOne.module.css';
+import { sectionOne } from "./sectionData";
 
 const checkIcon = (
   <svg width="16" height="13" viewBox="0 0 16 13" className="fill-current">
@@ -25,8 +25,8 @@ const AboutSectionOne = () => {
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 lg:w-1/2">
               <SectionTitle
-                title="Empathetic SWE"
-                paragraph="As a Sr. Software Engineer, I enjoy working with a dynamic team with engineers of all experience levels who help each other build and grow technical and leadership skills while creating, deploying, and supporting production applications."
+                title={sectionOne.title }
+                paragraph={sectionOne.description}
                 mb="44px"
               />
 
