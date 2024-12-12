@@ -16,7 +16,7 @@ const AboutPage = () => {
     <>
       <Breadcrumb
         pageName="About Me"
-        description="A software engineer dedicated to building scalable, user-centric applications."
+        description="Experienced Engineer with a passion for building high-performance, low maintenance, zero-downtime platforms, and applications."
       />
       <AboutSectionOne />
       <AboutSectionTwo />
