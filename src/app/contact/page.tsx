@@ -5,7 +5,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Let's Connect!",
-  description: "Have a question, want to collaborate, or hire me? Feel free to reach out!",
+  description:
+    "Have a question, want to collaborate, or hire me? Feel free to reach out!",
 };
 
 const ContactPage = () => {

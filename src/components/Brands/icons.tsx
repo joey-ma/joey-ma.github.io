@@ -1,4 +1,30 @@
-import { cibAmazonAws, cibAzureDevops, cibDjango, cibDocker, cibEslint, cibFirebase, cibGithub, cibGitlab, cibGoogleAnalytics, cibGoogleCloud, cibGraphql, cibJavascript, cibNextJs, cibNodeJs, cibPostgresql, cibPostman, cibPrettier, cibPython, cibReact, cibRedis, cibRedux, cibTwilio, cibTypescript, cibUpwork, cibVueJs } from '@coreui/icons';
+import {
+  cibAmazonAws,
+  cibAzureDevops,
+  cibDjango,
+  cibDocker,
+  cibEslint,
+  cibFirebase,
+  cibGithub,
+  cibGitlab,
+  cibGoogleAnalytics,
+  cibGoogleCloud,
+  cibGraphql,
+  cibJavascript,
+  cibNextJs,
+  cibNodeJs,
+  cibPostgresql,
+  cibPostman,
+  cibPrettier,
+  cibPython,
+  cibReact,
+  cibRedis,
+  cibRedux,
+  cibTwilio,
+  cibTypescript,
+  cibUpwork,
+  cibVueJs,
+} from "@coreui/icons";
 
 export const brand = {
   react: cibReact,
@@ -25,5 +51,5 @@ export const brand = {
   twilio: cibTwilio,
   upwork: cibUpwork,
   graphql: cibGraphql,
-  psql: cibPostgresql
-}
+  psql: cibPostgresql,
+};

@@ -12,27 +12,27 @@ const Footer = () => {
             <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
               <div className="mb-12 max-w-[360px] lg:mb-16">
                 <Link href="/" className="mb-8 inline-block">
-                <Image
-                  src="/images/logo/logo-full-light-mode.svg"
-                  alt="logo"
-                  width={140}
-                  height={30}
-                  className="w-full hidden dark:hidden sm:block"
-                />
-                <Image
-                  src="/images/logo/logo-full-dark-mode.svg"
-                  alt="logo"
-                  width={140}
-                  height={30}
-                  className="hidden w-full sm:dark:block"
-                />
-                <Image
-                  src="/images/logo/logo.svg"
-                  alt="logo"
-                  width={140}
-                  height={30}
-                  className="block sm:hidden w-8 min-w-8 rounded-full"
-                />
+                  <Image
+                    src="/images/logo/logo-full-light-mode.svg"
+                    alt="logo"
+                    width={140}
+                    height={30}
+                    className="hidden w-full dark:hidden sm:block"
+                  />
+                  <Image
+                    src="/images/logo/logo-full-dark-mode.svg"
+                    alt="logo"
+                    width={140}
+                    height={30}
+                    className="hidden w-full sm:dark:block"
+                  />
+                  <Image
+                    src="/images/logo/logo.svg"
+                    alt="logo"
+                    width={140}
+                    height={30}
+                    className="block w-8 min-w-8 rounded-full sm:hidden"
+                  />
                 </Link>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">
                   Software Engineer & Dream Builder
@@ -122,16 +122,17 @@ const Footer = () => {
                   Love Algorithms?
                 </h2>
                 <ul>
-                  {footerData.loveAlgos.map((link) => 
-                  <li key={link.id}>
-                    <Link
-                      href={link.path}
-                      target={link.newTab ? '_blank' : ''}
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                    >
-                      {link.title}
-                    </Link>
-                  </li>)}
+                  {footerData.loveAlgos.map((link) => (
+                    <li key={link.id}>
+                      <Link
+                        href={link.path}
+                        target={link.newTab ? "_blank" : ""}
+                        className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                      >
+                        {link.title}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -142,16 +143,17 @@ const Footer = () => {
                   Communities
                 </h2>
                 <ul>
-                  {footerData.communities.map((link) => 
-                  <li key={link.id}>
-                    <Link
-                      href={link.path}
-                      target={link.newTab ? '_blank' : ''}
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                    >
-                      {link.title}
-                    </Link>
-                  </li>)}
+                  {footerData.communities.map((link) => (
+                    <li key={link.id}>
+                      <Link
+                        href={link.path}
+                        target={link.newTab ? "_blank" : ""}
+                        className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                      >
+                        {link.title}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -162,16 +164,17 @@ const Footer = () => {
                   More
                 </h2>
                 <ul>
-                  {footerData.more.map((link) => 
-                  <li key={link.id}>
-                    <Link
-                      href={link.path}
-                      target={link.newTab ? '_blank' : ''}
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                    >
-                      {link.title}
-                    </Link>
-                  </li>)}
+                  {footerData.more.map((link) => (
+                    <li key={link.id}>
+                      <Link
+                        href={link.path}
+                        target={link.newTab ? "_blank" : ""}
+                        className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                      >
+                        {link.title}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

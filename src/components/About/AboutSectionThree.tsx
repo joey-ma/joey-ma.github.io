@@ -28,14 +28,14 @@ const AboutSectionThree = () => {
           <div className="w-full px-4 lg:w-1/2">
             <div className="max-w-[470px]">
               {sectionThree.map((subsection, idx) => (
-              <div key={idx} className="mb-9">
-                <h3 className="mb-4 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
-                  {subsection.title}
-                </h3>
-                <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
-                  {subsection.description}
-                </p>
-              </div>
+                <div key={idx} className="mb-9">
+                  <h3 className="mb-4 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
+                    {subsection.title}
+                  </h3>
+                  <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
+                    {subsection.description}
+                  </p>
+                </div>
               ))}
             </div>
           </div>

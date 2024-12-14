@@ -1,5 +1,5 @@
 import SectionTitle from "../Common/SectionTitle";
-import styles from './AboutSectionOne.module.css';
+import styles from "./AboutSectionOne.module.css";
 import { sectionOne } from "./sectionData";
 
 const checkIcon = (
@@ -25,7 +25,7 @@ const AboutSectionOne = () => {
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 lg:w-1/2">
               <SectionTitle
-                title={sectionOne.title }
+                title={sectionOne.title}
                 paragraph={sectionOne.description}
                 mb="44px"
               />
@@ -49,10 +49,12 @@ const AboutSectionOne = () => {
                 </div>
               </div>
             </div>
-            
-            <div id={styles.quickParent} className="w-full px-4 xs:mx-4 lg:mx-0 lg:w-1/2 bg-gray-200 dark:bg-transparent">
-              <div id={styles.quick} className="scale-75 sm:scale-100">
-              </div>
+
+            <div
+              id={styles.quickParent}
+              className="w-full bg-gray-200 px-4 dark:bg-transparent xs:mx-4 lg:mx-0 lg:w-1/2"
+            >
+              <div id={styles.quick} className="scale-75 sm:scale-100"></div>
             </div>
           </div>
         </div>

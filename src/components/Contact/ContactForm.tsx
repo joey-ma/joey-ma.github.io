@@ -1,15 +1,14 @@
-'use client';
+"use client";
 
 import { linkTo } from "@/lib/constants";
-import { validateForm } from "@/lib/utils";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -17,19 +16,21 @@ export function ContactForm() {
   const router = useRouter();
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      alert(`Your message has not been saved.\nYou will be redirected to Joey's LinkedIn Profile.`);
+      alert(
+        `Your message has not been saved.\nYou will be redirected to Joey's LinkedIn Profile.`,
+      );
       router.push(linkTo.LinkedIn);
     }, 500);
   };
@@ -92,11 +93,14 @@ export function ContactForm() {
           </div>
         </div>
         <div className="w-full px-4">
-          <button className="rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark" disabled={loading} >
-            {loading ? 'Loading...' : 'Submit'}
+          <button
+            className="rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark"
+            disabled={loading}
+          >
+            {loading ? "Loading..." : "Submit"}
           </button>
         </div>
       </div>
     </form>
-  )
+  );
 }

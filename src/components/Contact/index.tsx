@@ -17,9 +17,22 @@ const Contact = () => {
                 Need Help? Send a Message
               </h2>
               <p className="mb-4 text-base font-medium text-body-color">
-                <span className="font-semibold">Send me a message on <Link className='link-text' href={linkTo.LinkedIn}>LinkedIn</Link></span>!
+                <span className="font-semibold">
+                  Send me a message on{" "}
+                  <Link className="link-text" href={linkTo.LinkedIn}>
+                    LinkedIn
+                  </Link>
+                </span>
+                !
               </p>
-              <p className="mb-12 text-base font-medium text-body-color">I love GitHub! However, there are <Link href={linkTo.gitHubPagesLimits} className="link-text">limits</Link> to what one can do on GitHub Pages (as it is designed). These forms do NOT work. I just think they look neat.</p>
+              <p className="mb-12 text-base font-medium text-body-color">
+                I love GitHub! However, there are{" "}
+                <Link href={linkTo.gitHubPagesLimits} className="link-text">
+                  limits
+                </Link>{" "}
+                to what one can do on GitHub Pages (as it is designed). These
+                forms do NOT work. I just think they look neat.
+              </p>
               <ContactForm />
             </div>
           </div>

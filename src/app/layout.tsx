@@ -9,11 +9,7 @@ import "../styles/index.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html suppressHydrationWarning lang="en">
       {/*
@@ -35,3 +31,4 @@ export default function RootLayout({
 }
 
 import { Providers } from "./providers";
+import { ReactNode } from "react";

@@ -2,7 +2,7 @@ import { Brand, BrandIcon } from "@/types/brand";
 import Image from "next/image";
 import { IconImage } from "./IconImage";
 
-export function SingleBrand({ brand }: { brand: Brand }){
+export function SingleBrand({ brand }: { brand: Brand }) {
   const { href, image, imageLight, name } = brand;
 
   return (
@@ -17,19 +17,51 @@ export function SingleBrand({ brand }: { brand: Brand }){
       </a>
     </div>
   );
-};
+}
 
-function BrandImage({ image, imageLight, imageTitle }: {image: string | BrandIcon; imageLight?: string | BrandIcon; imageTitle: string}) {
-  if (typeof image === 'string' && typeof imageLight === 'string') 
-    return <div className="flex justify-center w-full gap-2">
-      <Image src={image} alt={imageTitle} fill className="hidden dark:block" />
-      <Image src={imageLight} alt={imageTitle} fill className="block dark:hidden" />
-    </div>
-  
-  if (typeof image !== 'string' && typeof imageLight !== 'string') 
-    return (<div className="flex flex-col items-center w-full  gap-4">
-      <span className="text-primary tracking-wide dark:text-white">{imageTitle}</span>
-      <IconImage name={image.name} className={`${imageLight ? 'hidden dark:block': ''} ${image.className}`} />
-      {imageLight && <IconImage name={imageLight.name} className={`block dark:hidden ${image.className}`} />}
-    </div>)
+function BrandImage({
+  image,
+  imageLight,
+  imageTitle,
+}: {
+  image: string | BrandIcon;
+  imageLight?: string | BrandIcon;
+  imageTitle: string;
+}) {
+  if (typeof image === "string" && typeof imageLight === "string")
+    return (
+      <div className="flex w-full justify-center gap-2">
+        <Image
+          src={image}
+          alt={imageTitle}
+          fill
+          className="hidden dark:block"
+        />
+        <Image
+          src={imageLight}
+          alt={imageTitle}
+          fill
+          className="block dark:hidden"
+        />
+      </div>
+    );
+
+  if (typeof image !== "string" && typeof imageLight !== "string")
+    return (
+      <div className="flex w-full flex-col items-center gap-4">
+        <span className="tracking-wide text-primary dark:text-white">
+          {imageTitle}
+        </span>
+        <IconImage
+          name={image.name}
+          className={`${imageLight ? "hidden dark:block" : ""} ${image.className}`}
+        />
+        {imageLight && (
+          <IconImage
+            name={imageLight.name}
+            className={`block dark:hidden ${image.className}`}
+          />
+        )}
+      </div>
+    );
 }

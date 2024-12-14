@@ -11,8 +11,28 @@ const Pricing = () => {
     <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
-          title={<>Flexible Solutions,<br/>Tailored to Your Needs</>}
-          paragraph={<><p className="text-base !leading-relaxed text-body-color md:text-lg">I offer custom web development and software engineering services designed to meet your unique project goals. Whether you’re looking for a simple website enhancement or a full-stack solution, I provide transparent pricing and flexible packages to fit your needs. </p><br/><p className="text-base !leading-relaxed text-body-color md:text-lg">Let’s collaborate and bring your vision to life!</p></>}
+          title={
+            <>
+              Flexible Solutions,
+              <br />
+              Tailored to Your Needs
+            </>
+          }
+          paragraph={
+            <>
+              <p className="text-base !leading-relaxed text-body-color md:text-lg">
+                I offer custom web development and software engineering services
+                designed to meet your unique project goals. Whether you’re
+                looking for a simple website enhancement or a full-stack
+                solution, I provide transparent pricing and flexible packages to
+                fit your needs.{" "}
+              </p>
+              <br />
+              <p className="text-base !leading-relaxed text-body-color md:text-lg">
+                Let’s collaborate and bring your vision to life!
+              </p>
+            </>
+          }
           center
           width="665px"
         />
@@ -57,76 +77,119 @@ const Pricing = () => {
           </div>
         </div>
 
-        {isSubscription ? <>
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
-          <PricingBox
-            packageName="Lite"
-            price='200'
-            duration="mo"
-            subtitle="Ideal for keeping your website running smoothly."
-          >
-            <OfferList text="Basic feature updates and minor bug fixes" status="active" />
-            <OfferList text="Performance monitoring" status="inactive" />
-            <OfferList text="Marketing analytics" status="inactive" />
-            <OfferList text="Priority support via email, chat, and phone" status="inactive" />
-          </PricingBox>
-          <PricingBox
-            packageName="Basic"
-            price="500"
-            duration="mo"
-            subtitle="Perfect for ongoing improvements and optimizations."
-          >
-            <OfferList text="Monthly updates and enhancements" status="active" />
-            <OfferList text="Performance monitoring" status="active" />
-            <OfferList text="Marketing analytics" status="inactive" />
-            <OfferList text="Priority support via email, chat, and phone" status="inactive" />
-          </PricingBox>
-          <PricingBox
-            packageName="Plus"
-            price="1000"
-            duration="mo"
-            subtitle="Comprehensive service for evolving needs."
-          >
-            <OfferList text="Continuous feature development & enhancements" status="active" />
-            <OfferList text="Performance monitoring" status="active" />
-            <OfferList text="Marketing analytics" status="active" />
-            <OfferList text="Priority support via email, chat, and phone" status="active" />
-          </PricingBox>
-        </div>
-      </> :  <>
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
-          <PricingBox
-            packageName="Lite"
-            price={"500"}
-            duration={"job"}
-            subtitle="Perfect for small tasks, bug fixes, or quick updates."
-          >
-            <OfferList text="1-2 minor tasks or bug fixes" status="active" />
-            <OfferList text="Delivery within 1 week" status="active" />
-            <OfferList text="Email support for 7 days post-delivery" status="active" />
-          </PricingBox>
-          <PricingBox
-            packageName="Basic"
-            price={"2000"}
-            duration={"job"}
-            subtitle="Ideal for medium-sized projects or feature implementations."
-          >
-            <OfferList text="Custom feature development or enhancement" status="active" />
-            <OfferList text="Delivery within 2-3 weeks" status="active" />
-            <OfferList text="Email and chat support for 14 days post-delivery" status="active" />
-          </PricingBox>
-          <PricingBox
-            packageName="Plus"
-            price={isSubscription ? "1000" : "5000"}
-            duration={isSubscription ? "mo" : "job"}
-            subtitle="Designed for complex projects or full website builds"
-          >
-            <OfferList text="Full-stack development or complex integrations" status="active" />
-            <OfferList text="Delivery timeline based on project scope" status="active" />
-            <OfferList text="30 days of priority support post-delivery" status="active" />
-          </PricingBox>
-        </div>
-      </>}
+        {isSubscription ? (
+          <>
+            <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+              <PricingBox
+                packageName="Lite"
+                price="200"
+                duration="mo"
+                subtitle="Ideal for keeping your website running smoothly."
+              >
+                <OfferList
+                  text="Basic feature updates and minor bug fixes"
+                  status="active"
+                />
+                <OfferList text="Performance monitoring" status="inactive" />
+                <OfferList text="Marketing analytics" status="inactive" />
+                <OfferList
+                  text="Priority support via email, chat, and phone"
+                  status="inactive"
+                />
+              </PricingBox>
+              <PricingBox
+                packageName="Basic"
+                price="500"
+                duration="mo"
+                subtitle="Perfect for ongoing improvements and optimizations."
+              >
+                <OfferList
+                  text="Monthly updates and enhancements"
+                  status="active"
+                />
+                <OfferList text="Performance monitoring" status="active" />
+                <OfferList text="Marketing analytics" status="inactive" />
+                <OfferList
+                  text="Priority support via email, chat, and phone"
+                  status="inactive"
+                />
+              </PricingBox>
+              <PricingBox
+                packageName="Plus"
+                price="1000"
+                duration="mo"
+                subtitle="Comprehensive service for evolving needs."
+              >
+                <OfferList
+                  text="Continuous feature development & enhancements"
+                  status="active"
+                />
+                <OfferList text="Performance monitoring" status="active" />
+                <OfferList text="Marketing analytics" status="active" />
+                <OfferList
+                  text="Priority support via email, chat, and phone"
+                  status="active"
+                />
+              </PricingBox>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+              <PricingBox
+                packageName="Lite"
+                price={"500"}
+                duration={"job"}
+                subtitle="Perfect for small tasks, bug fixes, or quick updates."
+              >
+                <OfferList
+                  text="1-2 minor tasks or bug fixes"
+                  status="active"
+                />
+                <OfferList text="Delivery within 1 week" status="active" />
+                <OfferList
+                  text="Email support for 7 days post-delivery"
+                  status="active"
+                />
+              </PricingBox>
+              <PricingBox
+                packageName="Basic"
+                price={"2000"}
+                duration={"job"}
+                subtitle="Ideal for medium-sized projects or feature implementations."
+              >
+                <OfferList
+                  text="Custom feature development or enhancement"
+                  status="active"
+                />
+                <OfferList text="Delivery within 2-3 weeks" status="active" />
+                <OfferList
+                  text="Email and chat support for 14 days post-delivery"
+                  status="active"
+                />
+              </PricingBox>
+              <PricingBox
+                packageName="Plus"
+                price={isSubscription ? "1000" : "5000"}
+                duration={isSubscription ? "mo" : "job"}
+                subtitle="Designed for complex projects or full website builds"
+              >
+                <OfferList
+                  text="Full-stack development or complex integrations"
+                  status="active"
+                />
+                <OfferList
+                  text="Delivery timeline based on project scope"
+                  status="active"
+                />
+                <OfferList
+                  text="30 days of priority support post-delivery"
+                  status="active"
+                />
+              </PricingBox>
+            </div>
+          </>
+        )}
 
         {/* Background Graphic */}
         <div className="absolute bottom-0 left-0 z-[-1]">

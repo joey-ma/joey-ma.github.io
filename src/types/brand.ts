@@ -9,4 +9,4 @@ export type Brand = {
 export type BrandIcon = {
   name: string;
   className?: string;
-}
+};
