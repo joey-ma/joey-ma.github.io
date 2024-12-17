@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export const sectionOne = {
   title: "Empathetic Engineer",
   description: (
@@ -14,13 +12,14 @@ export const sectionOne = {
       <p className="text-base !leading-relaxed text-body-color md:text-lg">
         I&apos;ve left off the non-technical experiences, but you can find my
         resume{" "}
-        <Link
-          href="/pdfs/1.3.0-joey-ma-resume.pdf"
+        <a
+          href="/pdfs/1.3.1-joey-ma-resume.pdf"
           target="_blank"
+          rel="noopener noreferrer"
           className="link-text"
         >
           here
-        </Link>
+        </a>
         .
       </p>
     </>
