@@ -12,9 +12,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Workflow variable (environment variables scoped at the workflow level)
+# Environment variables scoped at the workflow, repository level
 env:
-  NEXT_PUBLIC_CONTACT_URL: ${{ vars.NEXT_PUBLIC_CONTACT_URL }}
+  NEXT_PUBLIC_POSTHOG_KEY: ${{ vars.NEXT_PUBLIC_POSTHOG_KEY }}
+  NEXT_PUBLIC_POSTHOG_HOST: ${{ vars.NEXT_PUBLIC_POSTHOG_HOST }}
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -32,11 +33,11 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    # Job variable (environment variables scoped at the job level)
-    env:
-      EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
-      EMAIL_USER: ${{ secrets.EMAIL_USER }}
-      INBOX: ${{ secrets.INBOX }}
+    # Environment variable scoped at the job level
+    # env:
+    #   EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+    #   EMAIL_USER: ${{ secrets.EMAIL_USER }}
+    #   INBOX: ${{ secrets.INBOX }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -83,11 +84,8 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
-        # Step variables (environment variables scoped at the step level)
+        # Environment variables scoped at the step level
         run: |
-          echo "Workflow variable -> NEXT_PUBLIC_CONTACT_URL: $NEXT_PUBLIC_CONTACT_URL"
-          echo "Job variable -> INBOX: ${{ env.INBOX }}"
-          echo "Step variable -> TEST_SECRET: $TEST_SECRET"
           ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
