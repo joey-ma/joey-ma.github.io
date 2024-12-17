@@ -7,6 +7,8 @@ import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
 
 const Header = () => {
+  const pathname = usePathname();
+
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
   const navbarToggleHandler = () => {
@@ -35,8 +37,6 @@ const Header = () => {
       setOpenIndex(index);
     }
   };
-
-  const pathname = usePathname();
 
   return (
     <>
@@ -116,6 +116,7 @@ const Header = () => {
                       <li key={index} className="group relative">
                         {menuItem.path ? (
                           <Link
+                            onClick={navbarToggleHandler}
                             href={menuItem.path}
                             className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
                               pathname === menuItem.path
