@@ -2,7 +2,9 @@
 
 ## Overview
 
-Welcome to my personal website. While this is still a work-in-progress, I hope that eventually it will help showcase my skills, projects, and professional experiences!
+![Project Preview](public/images/readme/preview.png)
+
+Welcome to my website! While this is (and likely will always be) a work-in-progress, I hope that eventually it will help showcase my skills, projects, and professional experiences!
 
 ### Features
 - Home (`/`)
@@ -20,6 +22,7 @@ This portfolio was built using:
 - `Tailwind CSS`: For scalable, maintainable utility classes.
 - `GitHub Pages`: To deploy and host the website.
 - `GitHub Actions`: For CI/CD task automations.
+- `PostHog`: For web analytics.
 
 ### License
 
@@ -27,6 +30,6 @@ This project is licensed under the MIT License. See the [LICENSE](https://github
 
 ## Acknowledgments
 
-This project was initially based on [NextJSTemplates/startup-nextjs](https://github.com/NextJSTemplates/startup-nextjs). Many thanks to the creators for their great work!
+Thanks to the creators of [NextJSTemplates/startup-nextjs](https://github.com/NextJSTemplates/startup-nextjs) for allowing me to get things up and running quickly!
 
 Credit for the (cute) [quick brown fox](https://codepen.io/lynnandtonic/pen/YzQbVLZ) goes to [Lynn Fisher](https://codepen.io/lynnandtonic)
