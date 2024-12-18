@@ -3,17 +3,46 @@
 import { linkTo } from "@/lib/constants";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useFeatureFlagEnabled } from "posthog-js/react";
 
 export function ContactForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
-
   const [loading, setLoading] = useState(false);
+  const flagEnabled = useFeatureFlagEnabled("serverless-fn");
 
-  const router = useRouter();
+  const sendMessage = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_S_FN_BASE_URL}/api/hello?name=John`,
+        { method: "POST" },
+      ); // Adjust the query parameter as needed
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      // Access the message from the response
+      console.log("🚀 ~ fetchMessage ~ data:", data);
+      alert("Your message has been set successfully");
+      setLoading(false);
+    } catch (error) {
+      console.error("Fetch error:", error);
+    }
+  };
+
+  const redirectToLinkedIn = () => {
+    setTimeout(() => {
+      setLoading(false);
+      alert(
+        `Your message has not been saved.\nYou will be redirected to Joey's LinkedIn Profile.`,
+      );
+      router.push(linkTo.LinkedIn);
+    }, 500);
+  };
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -26,17 +55,17 @@ export function ContactForm() {
     e.preventDefault();
 
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      alert(
-        `Your message has not been saved.\nYou will be redirected to Joey's LinkedIn Profile.`,
-      );
-      router.push(linkTo.LinkedIn);
-    }, 500);
+
+    console.log("🚀 ~ handleSubmit ~ flagEnabled:", flagEnabled);
+    if (flagEnabled) {
+      await sendMessage();
+    } else {
+      redirectToLinkedIn();
+    }
   };
 
   return (
-    <form onClick={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div className="-mx-4 flex flex-wrap">
         <div className="w-full px-4 md:w-1/2">
           <div className="mb-8">
@@ -94,6 +123,7 @@ export function ContactForm() {
         </div>
         <div className="w-full px-4">
           <button
+            type="submit"
             className="rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark"
             disabled={loading}
           >
