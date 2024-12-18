@@ -6,6 +6,10 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { useFeatureFlagEnabled } from "posthog-js/react";
 import { validateForm } from "@/lib/utils";
 
+const alertMessage = `You may have analytics/ad/cookie blocker(s) on.
+Your message has not been saved.
+You will be redirected to Joey's LinkedIn Profile.`;
+
 export function ContactForm() {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -40,11 +44,7 @@ export function ContactForm() {
   const redirectToLinkedIn = () => {
     setTimeout(() => {
       setLoading(false);
-      alert(
-        `You may have analytics/ad/cookie blocker(s) on.
-        Your message has not been saved.
-        You will be redirected to Joey's LinkedIn Profile.`,
-      );
+      alert(alertMessage);
       router.push(linkTo.LinkedIn);
     }, 500);
   };
