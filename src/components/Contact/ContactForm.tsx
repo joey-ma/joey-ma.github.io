@@ -4,6 +4,7 @@ import { linkTo } from "@/lib/constants";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useFeatureFlagEnabled } from "posthog-js/react";
+import { validateForm } from "@/lib/utils";
 
 export function ContactForm() {
   const router = useRouter();
@@ -16,21 +17,23 @@ export function ContactForm() {
   const flagEnabled = useFeatureFlagEnabled("serverless-fn");
 
   const sendMessage = async () => {
+    const queryString = new URLSearchParams(formData).toString();
+    const apiRoute = `/api/contact?${queryString}`;
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_S_FN_BASE_URL}/api/hello?name=John`,
+        process.env.NEXT_PUBLIC_S_FN_BASE_URL + apiRoute,
         { method: "POST" },
-      ); // Adjust the query parameter as needed
+      );
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      const data = await response.json();
-      // Access the message from the response
-      console.log("🚀 ~ fetchMessage ~ data:", data);
-      alert("Your message has been set successfully");
+      const { error } = await response.json();
+      if (!error) alert("Your message has been set successfully");
+      else alert(error);
       setLoading(false);
     } catch (error) {
       console.error("Fetch error:", error);
+      return;
     }
   };
 
@@ -38,7 +41,9 @@ export function ContactForm() {
     setTimeout(() => {
       setLoading(false);
       alert(
-        `Your message has not been saved.\nYou will be redirected to Joey's LinkedIn Profile.`,
+        `You may have analytics/ad/cookie blocker(s) on.
+        Your message has not been saved.
+        You will be redirected to Joey's LinkedIn Profile.`,
       );
       router.push(linkTo.LinkedIn);
     }, 500);
@@ -56,7 +61,14 @@ export function ContactForm() {
 
     setLoading(true);
 
-    console.log("🚀 ~ handleSubmit ~ flagEnabled:", flagEnabled);
+    // validate form data
+    const error = validateForm(formData);
+    if (error) {
+      alert(error);
+      setLoading(false);
+      return;
+    }
+
     if (flagEnabled) {
       await sendMessage();
     } else {
