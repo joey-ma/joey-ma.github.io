@@ -80,20 +80,26 @@ export const footerData: { [key: string]: Menu[] } = {
   more: [
     {
       id: 1,
-      title: "Pricing",
-      path: "/pricing",
-      newTab: true,
-    },
-    {
-      id: 2,
       title: "GitHub",
       path: "https://github.com/joey-ma",
       newTab: true,
     },
     {
-      id: 3,
+      id: 2,
       title: "LinkedIn",
       path: "https://www.linkedin.com/in/joeyma/",
+      newTab: true,
+    },
+    {
+      id: 3,
+      title: "Atomic Design",
+      path: "https://atomicdesign.bradfrost.com/",
+      newTab: true,
+    },
+    {
+      id: 4,
+      title: "Periodic Table of HTML",
+      path: "https://joshduck.com/periodic-table.html",
       newTab: true,
     },
   ],
