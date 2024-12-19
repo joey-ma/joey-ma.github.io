@@ -3,7 +3,7 @@
 import { linkTo } from "@/lib/constants";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { useFeatureFlagEnabled } from "posthog-js/react";
+import { useFeatureFlagEnabled, usePostHog } from "posthog-js/react";
 import { validateForm } from "@/lib/utils";
 
 const alertMessage = `You may have analytics/ad/cookie blocker(s) on.
@@ -12,11 +12,13 @@ You will be redirected to Joey's LinkedIn Profile.`;
 
 export function ContactForm() {
   const router = useRouter();
+  const posthog = usePostHog();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const flagEnabled = useFeatureFlagEnabled("serverless-fn");
 
@@ -37,7 +39,14 @@ export function ContactForm() {
       setLoading(false);
     } catch (error) {
       console.error("Fetch error:", error);
-      return;
+      if (error === "Failed to fetch") {
+        posthog?.capture("contact_form_submit_failed", ContactForm);
+      }
+      setError(
+        "An error occurred while sending your message. Please try again later.",
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -143,6 +152,7 @@ export function ContactForm() {
           </button>
         </div>
       </div>
+      {error && <div className="mt-4 w-full px-4 text-red-500">{error}</div>}
     </form>
   );
 }
