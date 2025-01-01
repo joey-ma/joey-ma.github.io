@@ -4,6 +4,8 @@ on:
   # Schedule the workflow to run once per year on January 1st at midnight UTC
   schedule:
     - cron: "0 0 1 1 *"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 permissions:
   contents: write
