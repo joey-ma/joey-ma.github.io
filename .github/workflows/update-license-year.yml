@@ -3,7 +3,10 @@ name: Update LICENSE Year Annually
 on:
   # Schedule the workflow to run once per year on January 1st at midnight UTC
   schedule:
-    - cron: '0 0 1 1 *'
+    - cron: "0 0 1 1 *"
+
+permissions:
+  contents: write
 
 jobs:
   update-license:
